@@ -1,9 +1,9 @@
-
+library(dplyr)
 library(leaflet)
 
 m <- leaflet() %>%
 	addTiles() %>%  # Add default OpenStreetMap map tiles
-	addMarkers(lng=29.081134, lat=40.974860, popup="Evim evim güzel evim")%>% 
+	addMarkers(lng=29.081134, lat=40.974860, popup="Evim evim g?zel evim")%>% 
       addProviderTiles("NASAGIBS.ViirsEarthAtNight2012")
 m  # Print the map
 
