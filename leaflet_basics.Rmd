@@ -1,0 +1,61 @@
+---
+title: 'leaflet basics'
+author: "[Orhan Aktaş](https://www.linkedin.com/in/orhanaktas/)"
+date: "26 Nov 2020"
+output:
+  html_document:
+    theme: flatly
+    df_print: paged
+  pdf_document: default
+  word_document: default
+   
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+Bu dökümanda leaflet kütüphanesini R üzerinden kullanılmasını sağlayan leaflet paketini öğrenmeye çalışacağım. Temel olarak R Studio'nun hazırladığı aşağıdaki linki takip edeceğim.
+
+- [link1](https://github.com/leaflet-extras/leaflet-providers)
+
+önce gerekli paketleri yükleyelim.
+```{r load_packages}
+library(dplyr)
+library(leaflet)
+```
+
+daha sonra basit bir harita yaratmayla işe başlıyorum. addTiles() ile temel altlığı seçiyorum. Bu default olarak OpenStreetMap haritasını getiriyor. Buna alternatif 3.parti altlıklar eklemek de mümkün. Tüm alternatifler [buradan](http://leaflet-extras.github.io/leaflet-providers/preview/index.html) incelenebiliyor. 
+```{r create_map, echo=TRUE}
+leaflet() %>%
+	addTiles() %>%  # Add default OpenStreetMap map tiles
+	addMarkers(lng=29.081134, lat=40.974860, popup="Evim evim güzel evim") %>% 
+  addProviderTiles(providers$Stamen.Toner)
+```
+Bazı temel haritalar:
+
+* NASAGIBS.ViirsEarthAtNight2012
+* Esri.WorldImagery
+* Esri.WorldGrayCanvas
+* Esri.WorldTerrain
+* Esri.WorldTopoMap
+* OpenTopoMap
+* Esri.WorldShadedRelief
+* CartoDB.DarkMatter
+
+bu altlıklar çeşitli şekillerde birlikte de kullanılabiliyorlar.
+```{r create_map2, echo=TRUE}
+leaflet() %>%
+	addTiles() %>%  # Add default OpenStreetMap map tiles
+	addMarkers(lng=29.081134, lat=40.974860, popup="Evim evim güzel evim") %>% 
+  addProviderTiles(providers$MtbMap) %>%
+  addProviderTiles(
+    providers$Stamen.TonerLines,
+    options = providerTileOptions(opacity = 0.35)
+    ) %>%
+  addProviderTiles(providers$Stamen.TonerLabels)
+```
