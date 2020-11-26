@@ -30,7 +30,7 @@ library(leaflet)
 ```
 
 daha sonra basit bir harita yaratmayla işe başlıyorum. addTiles() ile temel altlığı seçiyorum. Bu default olarak OpenStreetMap haritasını getiriyor. Buna alternatif 3.parti altlıklar eklemek de mümkün. Tüm alternatifler [buradan](http://leaflet-extras.github.io/leaflet-providers/preview/index.html) incelenebiliyor. 
-```{r create_map, echo=TRUE}
+```{r create_map, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
 leaflet() %>%
 	addTiles() %>%  # Add default OpenStreetMap map tiles
 	addMarkers(lng=29.081134, lat=40.974860, popup="Evim evim güzel evim") %>% 
